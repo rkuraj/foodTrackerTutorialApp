@@ -13,6 +13,7 @@
 		9A59D6E51F8CE73E00D9FCC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A59D6E41F8CE73E00D9FCC2 /* Assets.xcassets */; };
 		9A59D6E81F8CE73E00D9FCC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A59D6E61F8CE73E00D9FCC2 /* LaunchScreen.storyboard */; };
 		9A59D6F31F8CE73E00D9FCC2 /* foodTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A59D6F21F8CE73E00D9FCC2 /* foodTrackerTests.swift */; };
+		9A59D6FE1F8E275500D9FCC2 /* ratingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A59D6FD1F8E275500D9FCC2 /* ratingControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		9A59D6EE1F8CE73E00D9FCC2 /* foodTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = foodTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A59D6F21F8CE73E00D9FCC2 /* foodTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = foodTrackerTests.swift; sourceTree = "<group>"; };
 		9A59D6F41F8CE73E00D9FCC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A59D6FD1F8E275500D9FCC2 /* ratingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ratingControl.swift; path = ../ratingControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				9A59D6DD1F8CE73E00D9FCC2 /* AppDelegate.swift */,
+				9A59D6FD1F8E275500D9FCC2 /* ratingControl.swift */,
 				9A59D6DF1F8CE73E00D9FCC2 /* ViewController.swift */,
 				9A59D6E11F8CE73E00D9FCC2 /* Main.storyboard */,
 				9A59D6E41F8CE73E00D9FCC2 /* Assets.xcassets */,
@@ -199,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A59D6FE1F8E275500D9FCC2 /* ratingControl.swift in Sources */,
 				9A59D6E01F8CE73E00D9FCC2 /* ViewController.swift in Sources */,
 				9A59D6DE1F8CE73E00D9FCC2 /* AppDelegate.swift in Sources */,
 			);
