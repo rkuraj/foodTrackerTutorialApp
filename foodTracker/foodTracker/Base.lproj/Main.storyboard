@@ -57,9 +57,8 @@
                                 </connections>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TqL-Is-SRq" customClass="ratingControl" customModule="foodTracker" customModuleProvider="target">
-                                <rect key="frame" x="16" y="456" width="343" height="50"/>
+                                <rect key="frame" x="42" y="457" width="290" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="CwF-CN-Pfg"/>
                                     <constraint firstAttribute="height" constant="50" id="bUc-pw-flM"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -73,12 +72,13 @@
                         <constraints>
                             <constraint firstItem="JGY-Yw-iF3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="1oq-QC-gY9"/>
                             <constraint firstItem="yKI-8X-v7X" firstAttribute="top" secondItem="JGY-Yw-iF3" secondAttribute="bottom" constant="20" id="2mv-jD-tW7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TqL-Is-SRq" secondAttribute="trailing" constant="27" id="QHd-dB-YpF"/>
                             <constraint firstItem="yKI-8X-v7X" firstAttribute="leading" secondItem="JGY-Yw-iF3" secondAttribute="leading" id="Wt6-c5-m2U"/>
-                            <constraint firstItem="TqL-Is-SRq" firstAttribute="leading" secondItem="yKI-8X-v7X" secondAttribute="leading" id="Xp5-g1-mbL"/>
+                            <constraint firstItem="TqL-Is-SRq" firstAttribute="leading" secondItem="yKI-8X-v7X" secondAttribute="leading" constant="26" id="Xp5-g1-mbL"/>
                             <constraint firstItem="JGY-Yw-iF3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="lhN-73-kb9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JGY-Yw-iF3" secondAttribute="trailing" id="mF7-jq-dTR"/>
                             <constraint firstItem="yKI-8X-v7X" firstAttribute="trailing" secondItem="JGY-Yw-iF3" secondAttribute="trailing" id="nHl-6Z-pjc"/>
-                            <constraint firstItem="TqL-Is-SRq" firstAttribute="top" secondItem="yKI-8X-v7X" secondAttribute="bottom" constant="19" id="uhd-Lk-vz3"/>
+                            <constraint firstItem="TqL-Is-SRq" firstAttribute="top" secondItem="yKI-8X-v7X" secondAttribute="bottom" constant="20" id="uhd-Lk-vz3"/>
                         </constraints>
                     </view>
                     <connections>

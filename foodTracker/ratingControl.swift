@@ -20,6 +20,13 @@ class ratingControl: UIStackView {
     
     //MARK: Properties
     private var ratingButtons = [UIButton]()
+    var rating: Int = 0
+    {
+        didSet{
+            updateButtonSelectionStatus()
+        }
+    }
+    
     @IBInspectable var starSize: CGSize = CGSize(width: 50.0, height: 50.0)
     {
         didSet{
@@ -46,8 +53,21 @@ class ratingControl: UIStackView {
     
     //MARK: Private methods
     
+    private func setImagesForButton(btn: UIButton) -> ()
+    {
+        btn.setImage(#imageLiteral(resourceName: "emptyStar"), for: .normal)
+        btn.setImage(#imageLiteral(resourceName: "filledStar"), for: .selected)
+        btn.setImage(#imageLiteral(resourceName: "highlightedStar"), for: .highlighted)
+        btn.setImage(#imageLiteral(resourceName: "highlightedStar"), for: [.selected, .highlighted])
+    }
+    
     private func createButtons()
     {
+        //let bundle = Bundle(for:type(of: self))
+        
+//        let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
+        
+        
         for button in ratingButtons
         {
             removeArrangedSubview(button)
@@ -59,22 +79,44 @@ class ratingControl: UIStackView {
         {
             let button = UIButton()
             
+            setImagesForButton(btn: button)
+            
             button.translatesAutoresizingMaskIntoConstraints = false
             button.heightAnchor.constraint(equalToConstant: starSize.height).isActive = true
             button.widthAnchor.constraint(equalToConstant: starSize.width).isActive = true
-            
-            button.backgroundColor = UIColor.blue
         
-            button.addTarget(self, action: #selector(ratingControl.buttonRatingTapped(button:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(ratingControl.ratingbuttonTapped(button:)), for: .touchUpInside)
             
             addArrangedSubview(button)
             
             ratingButtons.append(button)
         }
     }
+
     
-    func buttonRatingTapped(button: UIButton)
+    @objc private func ratingbuttonTapped(button: UIButton)
     {
-        print("botton pressed")
+        guard let index = ratingButtons.index(of: button) else {
+            fatalError("The button, \(button), is not in the ratingButtons array: \(ratingButtons)")
+        }
+        
+        // Calculate the rating of the selected button
+        let selectedRating = index + 1
+        
+        if selectedRating == rating {
+            // If the selected star represents the current rating, reset the rating to 0.
+            rating = 0
+        } else {
+            // Otherwise set the rating to the selected star
+            rating = selectedRating
+        }
+    }
+    
+    private func updateButtonSelectionStatus () -> ()
+    {
+        for(index, button) in ratingButtons.enumerated()
+        {
+            button.isSelected = index < rating
+        }
     }
 }
