@@ -83,6 +83,7 @@
                     </view>
                     <connections>
                         <outlet property="mealImageView" destination="yKI-8X-v7X" id="Pcl-Qk-1Qr"/>
+                        <outlet property="starsRatingControl" destination="TqL-Is-SRq" id="OFo-CY-X7t"/>
                         <outlet property="textFieldName" destination="xLH-W8-z3U" id="WRB-NT-Y4d"/>
                     </connections>
                 </viewController>

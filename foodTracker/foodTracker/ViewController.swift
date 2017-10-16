@@ -12,8 +12,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
 
     //MARK: Outlets
     @IBOutlet weak var textFieldName: UITextField!
-    
     @IBOutlet weak var mealImageView: UIImageView!
+    @IBOutlet weak var starsRatingControl: ratingControl!
     
     //MARK: Variables
     var mealName:String = ""

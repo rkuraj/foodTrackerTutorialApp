@@ -75,7 +75,7 @@ class ratingControl: UIStackView {
         }
         ratingButtons.removeAll()
         
-        for _ in 0..<starsCount
+        for index in 0..<starsCount
         {
             let button = UIButton()
             
@@ -86,6 +86,8 @@ class ratingControl: UIStackView {
             button.widthAnchor.constraint(equalToConstant: starSize.width).isActive = true
         
             button.addTarget(self, action: #selector(ratingControl.ratingbuttonTapped(button:)), for: .touchUpInside)
+            
+            button.accessibilityLabel = "Set \(index + 1) star rating"
             
             addArrangedSubview(button)
             
@@ -117,6 +119,30 @@ class ratingControl: UIStackView {
         for(index, button) in ratingButtons.enumerated()
         {
             button.isSelected = index < rating
+            
+            let hintString:String?
+            if rating == index + 1 {
+                hintString = "Tap to reset rating to zero."
+            }
+            else{
+                hintString = ""
+            }
+            
+            let valueString: String
+            switch rating {
+            case 0:
+                valueString = "No rating set."
+            case 1:
+                valueString = "Selected 1 star."
+            default:
+                valueString = "Selected \(rating) stars."
+            }
+            
+            button.accessibilityHint = hintString
+            button.accessibilityValue = valueString
         }
+        
+        
+        
     }
 }
