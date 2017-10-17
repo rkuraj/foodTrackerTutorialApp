@@ -80,6 +80,16 @@ class MealTableViewController: UITableViewController {
         return cell
     }
     
+    //MARK: Acitons
+    @IBAction func unwindToMealList(_ sender: UIStoryboardSegue)
+    {
+        if let sourceViewController = sender.source as? MealViewController, let meal = sourceViewController.meal {
+            let newIndexPath = IndexPath(row: meals.count, section:0)
+            meals.append(meal)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

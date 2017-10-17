@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MealViewController.swift
 //  foodTracker
 //
 //  Created by Robert Kuraj on 10.10.2017.
@@ -7,21 +7,26 @@
 //
 
 import UIKit
+import os.log
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     //MARK: Outlets
     @IBOutlet weak var textFieldName: UITextField!
     @IBOutlet weak var mealImageView: UIImageView!
     @IBOutlet weak var starsRatingControl: ratingControl!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     //MARK: Variables
-    var mealName:String = ""
+    var meal: Meal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         textFieldName.delegate = self
+        
+        updateSaveButtonState()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -32,8 +37,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
 
     //MARK: textFieldNameDelegate
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        saveButton.isEnabled = false
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        mealName = textFieldName.text!
+        updateSaveButtonState()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -44,7 +53,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     //MARK: Actions
     @IBAction func clearMealName(_ sender: UIButton) {
         textFieldName.text = ""
-        mealName = ""
+        updateSaveButtonState()
     }
     @IBAction func chooseImageFromLibrary(_ sender: UITapGestureRecognizer) {
         textFieldName.resignFirstResponder()
@@ -55,6 +64,23 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         imagePickerController.delegate = self
         
         present(imagePickerController, animated: true, completion: nil)
+    }
+
+    //MARK:  Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        
+        let name = textFieldName.text ?? ""
+        let photo = mealImageView.image
+        let rating = starsRatingControl.rating
+        
+        meal = Meal(name: name, photo: photo, rating: rating)
     }
     
     //MARK: mealImageViewDelegate
@@ -76,7 +102,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: Functions
-
+    //MARK:Private methods
+    
+    private func updateSaveButtonState() {
+        let text = textFieldName.text ?? ""
+        if text.isEmpty {
+            saveButton.isEnabled = false
+            navigationItem.title = "New meal"
+        }
+        else{
+            saveButton.isEnabled = true
+            navigationItem.title = text
+        }
+    }
 }
 
