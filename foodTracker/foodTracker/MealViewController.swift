@@ -26,8 +26,16 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         textFieldName.delegate = self
         
-        updateSaveButtonState()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if let meal = meal {
+            navigationItem.title = meal.name
+            textFieldName.text = meal.name
+            mealImageView.image = meal.photo
+            starsRatingControl.rating = meal.rating
+        }
+        
+        updateSaveButtonState()
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,7 +91,17 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         meal = Meal(name: name, photo: photo, rating: rating)
     }
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+       let isPresentingInAddMealMode = presentingViewController is UINavigationController
+        if isPresentingInAddMealMode {
+            dismiss(animated: true, completion: nil)
+        }
+        else if let isOwningNavigationController = navigationController{
+            isOwningNavigationController.popViewController(animated: true)
+        }
+        else{
+            fatalError("The MealViewController is not inside a navigation controller.")
+        }
+        
     }
     
     //MARK: mealImageViewDelegate

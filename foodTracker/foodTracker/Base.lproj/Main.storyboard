@@ -53,6 +53,7 @@
                                     <outlet property="mealNameLabel" destination="DNC-Hq-arg" id="mMl-5R-UdS"/>
                                     <outlet property="mealPhoto" destination="dvR-Fz-IIc" id="LRR-Vj-ab7"/>
                                     <outlet property="mealRating" destination="O5K-Bq-1e9" id="nRM-qd-F3R"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="showDetails" id="OgY-Dd-AKz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -207,10 +208,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vmc-td-oBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1293.5999999999999" y="135.38230884557723"/>
+            <point key="canvasLocation" x="1326" y="475"/>
         </scene>
     </scenes>
     <resources>
         <image name="noPhotoImage" width="540" height="540"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="OgY-Dd-AKz"/>
+    </inferredMetricsTieBreakers>
 </document>
